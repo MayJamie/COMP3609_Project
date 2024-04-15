@@ -301,7 +301,7 @@ public class Player {
 	   if (goingUp) {
 		Point tilePos = collidesWithTileUp (x, newY);	
 	   	if (tilePos != null) {				// hits a tile going up
-		   	System.out.println ("Jumping: Collision Going Up!");
+		   	// System.out.println ("Jumping: Collision Going Up!");
 
       	  		int offsetY = tileMap.getOffsetY();
 			int topTileY = ((int) tilePos.getY()) * TILE_SIZE + offsetY;
@@ -312,7 +312,7 @@ public class Player {
 		}
 	   	else {
 			y = newY;
-			System.out.println ("Jumping: No collision.");
+			// System.out.println ("Jumping: No collision.");
 
 			// the following if-statement is to pause the jump to capture the screen
 
@@ -332,7 +332,7 @@ public class Player {
 	    if (goingDown) {			
 		Point tilePos = collidesWithTileDown (x, newY);	
 	   	if (tilePos != null) {				// hits a tile going up
-		    System.out.println ("Jumping: Collision Going Down!");
+		    // System.out.println ("Jumping: Collision Going Down!");
 	  	    int playerHeight = playerImage.getHeight(null);
 		    goingDown = false;
 
@@ -345,7 +345,7 @@ public class Player {
 	       }
 	       else {
 		    y = newY;
-		    System.out.println ("Jumping: No collision.");
+		    // System.out.println ("Jumping: No collision.");
 	       }
 	   }
       }
