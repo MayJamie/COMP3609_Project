@@ -32,7 +32,7 @@ public class TileMap {
 
     private HeartFragment heart_fragments[] = new HeartFragment[5];
     private EnemyF flying_enemies[] = new EnemyF[3];
-    private EnemyG Ground_enemies[] = new EnemyG[3];
+    private EnemyG ground_enemies[] = new EnemyG[3];
     private int heart_fragments_collected;
 
     private HashMap<Integer, Integer> lvl1HFSpawnLocations = new HashMap<Integer, Integer>();
@@ -116,6 +116,16 @@ public class TileMap {
             counter++;
         }
         counter = 0;
+
+        for (int i : lvl1GESpawnLocations.keySet()) {
+            ground_enemies[counter] = new EnemyG(panel,
+            player,
+            i,
+            lvl1GESpawnLocations.get(i));
+            counter++;
+        }
+        counter = 0;
+
         
 
     } else if (level == 2) {
@@ -318,7 +328,15 @@ public class TileMap {
                 null);
 
         }
+        
+    //draw ground enemies
+        for (int i = 0; i < ground_enemies.length; i++) {
+            g2.drawImage(ground_enemies[i].getImage(),
+                Math.round(ground_enemies[i].getX()) + offsetX,
+                Math.round(ground_enemies[i].getY()), 45, 70, //+ offsetY, 50, 50,
+                null);
 
+        }
 /*
         // draw sprites
         Iterator i = map.getSprites();
@@ -388,6 +406,8 @@ public class TileMap {
     for (int i = 0; i < flying_enemies.length; i++) {
         flying_enemies[i].collidesWithPlayer();
         flying_enemies[i].update();
+        ground_enemies[i].collidesWithPlayer();
+        ground_enemies[i].update();
     }
 
 	if (heart.collidesWithPlayer()) {

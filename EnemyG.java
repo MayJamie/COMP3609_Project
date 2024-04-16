@@ -54,7 +54,7 @@ public class EnemyG {
 		originalImage = true;
 		grayImage = false;
 
-		spriteImage = ImageManager.loadImage("images/EnemyF.png");
+		spriteImage = ImageManager.loadImage("images/EnemyG.png");
 
 	}
 
