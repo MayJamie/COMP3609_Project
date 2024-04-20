@@ -16,6 +16,9 @@ public class EnemyF {
 	private static final int XSIZE = 50;		// width of the image
 	private static final int YSIZE = 75;		// height of the image
 	//private static final int DX = 2;		// amount of pixels to move in one update
+	private double amplitude = 50; // amplitude of the sine wave
+  private double frequency = 0.005; // frequency of the sine wave
+
 	private static final int YPOS = 150;		// vertical position of the image
 
 	private JPanel panel;				// JPanel on which image will be drawn
@@ -23,7 +26,7 @@ public class EnemyF {
 	private int x;
 	private int y;
 	private int dx;
-    private int step;
+	private int step;
 
 	private Player player;
 
@@ -45,7 +48,7 @@ public class EnemyF {
 		this.x = x;
 		this.y = y;
 		dx = 10;
-        step = 0;
+    step = 0;
 
 		this.player = player;
 
@@ -83,7 +86,17 @@ public class EnemyF {
 		return new Rectangle2D.Double (x, y, XSIZE, YSIZE);
 	}
 
+	public void update() {
+		// Update vertical position based on a sine wave
+		long time = System.currentTimeMillis();
+		y = YPOS + (int) (amplitude * Math.sin(frequency * time));
+	}
 
+	 public void setX(int x) {
+				this.x = x;
+	 }
+
+/*
 	public void update() {				
 		x = x + dx;
 
@@ -95,17 +108,11 @@ public class EnemyF {
         step++;
 
 	}
-
+	*/
 
    	public int getX() {
       		return x;
    	}
-
-
-   	public void setX(int x) {
-      		this.x = x;
-   	}
-
 
    	public int getY() {
       		return y;
