@@ -1,9 +1,9 @@
 # COMP 3609 - Game Programming - Project
+## To Do:
 • Requirements Analysis Doc: ✅
 
 • Design Document complete: ✅
 
-## Next Steps:
 • Import code template from lab: ✅
 
 • Start working on the game: ✅
