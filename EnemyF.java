@@ -17,9 +17,9 @@ public class EnemyF {
 	private static final int YSIZE = 75;		// height of the image
 	//private static final int DX = 2;		// amount of pixels to move in one update
 	private double amplitude = 50; // amplitude of the sine wave
-  private double frequency = 0.005; // frequency of the sine wave
+  private double frequency = 0.03; // frequency of the sine wave
 
-	private static final int YPOS = 150;		// vertical position of the image
+	private static final int YPOS = 120;		// vertical position of the image
 
 	private JPanel panel;				// JPanel on which image will be drawn
 	private Dimension dimension;
@@ -87,14 +87,21 @@ public class EnemyF {
 	}
 
 	public void update() {
-		// Update vertical position based on a sine wave
-		long time = System.currentTimeMillis();
-		y = YPOS + (int) (amplitude * Math.sin(frequency * time));
-	}
+		// Move horizontally
+		x += dx;
 
-	 public void setX(int x) {
-				this.x = x;
-	 }
+		// Update vertical position based on a sine wave
+		y = YPOS + (int) (amplitude * Math.sin(frequency * x));
+
+		// Update step counter
+		step++;
+
+		// Change direction if the step count reaches the desired limit (17 steps)
+		if (step >= 15) {
+				dx *= -1; // Reverse horizontal movement direction
+				step = 0; // Reset step counter
+		}
+	}
 
 /*
 	public void update() {				
